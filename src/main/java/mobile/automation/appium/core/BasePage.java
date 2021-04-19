@@ -2,8 +2,12 @@ package mobile.automation.appium.core;
 
 import io.appium.java_client.MobileElement;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.WaitOptions;
+import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.touch.TouchActions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -46,24 +50,23 @@ public class BasePage {
     }
 
     public void pressByCoordinate(int x, int y) {
-        new TouchAction(getDriver()).press(x, y).perform();
+        new TouchAction(getDriver()).press(PointOption.point(x, y)).perform();
     }
 
     public void tapByCoordinate(int x, int y) {
-        new TouchAction(getDriver()).tap(x, y).perform();
+        new TouchAction(getDriver()).tap(PointOption.point(x, y)).perform();
     }
 
     public void scroll(double start, double end) {
-
         Dimension size = getDriver().manage().window().getSize();
         int pointX = size.width / 2;
         int startY = (int) (size.height * start);
         int endY = (int) (size.height * end);
 
         new TouchAction(getDriver())
-                .press(pointX, startY)
-                .waitAction(Duration.ofSeconds(3))
-                .moveTo(pointX, endY)
+                .press(PointOption.point(pointX, startY))
+                .waitAction(WaitOptions.waitOptions(Duration.ofMillis(500)))
+                .moveTo(PointOption.point(pointX, endY))
                 .release()
                 .perform();
     }

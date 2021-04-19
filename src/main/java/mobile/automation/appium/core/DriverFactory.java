@@ -25,7 +25,6 @@ public class DriverFactory {
         desiredCapabilities.setCapability("platformName", "Android");
         desiredCapabilities.setCapability("deviceName", "emulator-5554");
         desiredCapabilities.setCapability("automationName", "uiautomator2");
-        desiredCapabilities.setCapability("ensureWebviewsHavePages", true);
         desiredCapabilities.setCapability(MobileCapabilityType.APP, "/Users/daniel.a.januario/Sandbox/personal/udemy/androidAppiumAutomation/src/main/resources/CTAppium_1_2.apk");
 
         try {

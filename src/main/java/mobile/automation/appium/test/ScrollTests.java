@@ -16,10 +16,10 @@ public class ScrollTests extends BaseTest {
     public void scrollToOption() {
         menuPage.scroll(0.9, 0.1);
 
-//        menuPage.accessOption("Opção bem escondida");
-//
-//        assertEquals("Você achou essa opção", alertPage.getAlertMessage());
-//
-//        menuPage.clickByText("OK");
+        menuPage.accessOption("Opção bem escondida");
+
+        assertEquals("Você achou essa opção", alertPage.getAlertMessage());
+
+        menuPage.clickByText("OK");
     }
 }
